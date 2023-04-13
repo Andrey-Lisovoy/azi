@@ -115,16 +115,16 @@ increaseBtn.addEventListener('click', () => {
 let pasBtn = document.querySelector('#pas')
 pasBtn.addEventListener('click', () => {
     if(ICanClickPas) {
-        switch(event) {
-            case 'firstBet': {
-                socket.emit('firstBet', false);
-                break;
-            };
-            case 'secondBet': {
-                socket.emit('secondBet', 'pas');
-                break
-            };
-        }
+        // switch(event) {
+        //     case 'firstBet': {
+        //         socket.emit('firstBet', false);
+        //         break;
+        //     };
+        //     case 'secondBet': {
+        //         socket.emit('secondBet', 'pas');
+        //         break
+        //     };
+        // }
         ICanClickPas = false
         ICanClickEqual = false
         ICanClickIncrease = false
@@ -226,15 +226,15 @@ function firstBet(currentSocketId, data) {
     myCards.style="display: flex";
 
     if(currentSocketId != data.player.socketId) {
-        $text = `Игра началась. Игроки делают первоначальную ставку. Очередь игрока ${data.player.name}.`;
+        text = `Игра началась. Игроки делают первоначальную ставку. Очередь игрока ${data.player.name}.`;
     } else {
         ICanClickIncrease = true;
         ICanClickPas = true;
         event = 'firstBet'
-        $text = `Игра началась. Ваша очередь делать первоначальную ставку. Нажмите ПОВЫСИТЬ(играть дальше) или ПАС(не участвовать)`;
+        text = `Игра началась. Ваша очередь делать первоначальную ставку. Нажмите ПОВЫСИТЬ(играть дальше)`;
     }
 
-    updateInfoText($text)
+    updateInfoText(text)
 }
 
 function bank(data) {
@@ -282,7 +282,7 @@ function secondBet(currentSocketId, data) {
         ICanClickPas = true;
         ICanClickEqual = true;
         event = 'secondBet'
-        $text = `Ваша очередь делать вторую ставку. Нажмите ПОВЫСИТЬ(предыдущая ставка х2), ПАС(не участвовать) или УРАВНЯТЬ(поставить предыдущую ставку)`;
+        $text = `Ваша очередь делать вторую ставку. Нажмите ПОВЫСИТЬ(предыдущая ставка х2) или УРАВНЯТЬ(поставить предыдущую ставку)`;
     }
 
     updateInfoText($text)
@@ -301,11 +301,11 @@ function discardCard(currentSocketId, data) {
     }
 
     if(currentSocketId != data.player.socketId) {
-        $text = `Розыгрыш. Выкидывают одну карту. Очередь игрока ${data.player.name}.`;
+        text = `Розыгрыш. Выкидывают одну карту. Очередь игрока ${data.player.name}.`;
     } else {
         ICanClickCard = true;
         event = 'chooseCard'
-        $text = `Ваша очередь выкидывать карту. Выберите желаемую карту`;
+        text = `Ваша очередь выкидывать карту. Выберите желаемую карту`;
     }
 
     updateInfoText($text)
@@ -330,8 +330,12 @@ function winPlayer(currentSocketId, data) {
     let myCard = document.querySelector('.my-card-player .card');
     myCard.style = 'display: none';
 
-    $text = `Выиграл игрок ${data.player.name}. Нажмите готово для следующей партии`
+    let text = `Выиграл игрок ${data.player.name}. Нажмите готово для следующей партии`
     ICanClickReady = true;
+    ICanClickCard = false;
+    ICanClickEqual = false;
+    ICanClickIncrease = false;
+    ICanClickPas = false;
     let readyBtn = document.querySelector('#ready');
     let pasBtn = document.querySelector('#pas');
     let increaseBtn = document.querySelector('#increase');
@@ -348,15 +352,20 @@ function winPlayer(currentSocketId, data) {
     let myCardsAll = document.querySelectorAll('.my-card');
     myCardsAll[0].dataset.id = '';
     myCardsAll[0].querySelector('.card').src = `/static/img/cards/рубашка.png`
+    myCardsAll[0].querySelector('.card').style = ""
     myCardsAll[1].dataset.id = '';
     myCardsAll[1].querySelector('.card').src = `/static/img/cards/рубашка.png`
+    myCardsAll[1].querySelector('.card').style = ""
     myCardsAll[2].dataset.id = '';
     myCardsAll[2].querySelector('.card').src = `/static/img/cards/рубашка.png`
+    myCardsAll[2].querySelector('.card').style = ""
 
     let deskSuit = document.querySelector('.trump-card')
     deskSuit.src = `/static/img/cards/рубашка.png`
 
-    updateInfoText($text)
+    console.log('text', text);
+
+    updateInfoText(text)
 
 }
 
@@ -369,8 +378,12 @@ function azi(data) {
     let myCard = document.querySelector('.my-card-player .card');
     myCard.style = 'display: none';
 
-    $text = `Ази. Нажмите готово для следующей партии`
+    let text = `Ази. Нажмите готово для следующей партии`
     ICanClickReady = true;
+    ICanClickCard = false;
+    ICanClickEqual = false;
+    ICanClickIncrease = false;
+    ICanClickPas = false;
     let readyBtn = document.querySelector('#ready');
     let pasBtn = document.querySelector('#pas');
     let increaseBtn = document.querySelector('#increase');
@@ -387,13 +400,18 @@ function azi(data) {
     let myCardsAll = document.querySelectorAll('.my-card');
     myCardsAll[0].dataset.id = '';
     myCardsAll[0].querySelector('.card').src = `/static/img/cards/рубашка.png`
+    myCardsAll[0].querySelector('.card').style = ""
     myCardsAll[1].dataset.id = '';
     myCardsAll[1].querySelector('.card').src = `/static/img/cards/рубашка.png`
+    myCardsAll[1].querySelector('.card').style = ""
     myCardsAll[2].dataset.id = '';
     myCardsAll[2].querySelector('.card').src = `/static/img/cards/рубашка.png`
+    myCardsAll[2].querySelector('.card').style = ""
 
     let deskSuit = document.querySelector('.trump-card')
     deskSuit.src = `/static/img/cards/рубашка.png`
 
-    updateInfoText($text)
+    console.log('text', text);
+
+    updateInfoText(text)
 }
