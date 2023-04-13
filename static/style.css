@@ -1,0 +1,260 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(5, 5, 24);
+}
+
+.info-container {
+    width: 1280px;
+    height: 20px;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+}
+
+.my-name {
+    width: 20%;
+}
+
+.info {
+    width: 80%;
+}
+
+.table {
+    width: 1280px;
+    height: 750px;
+    background-color: rgb(12, 53, 12);
+    margin: 0 auto;
+    border-radius: 20%;
+    border: 20px rgb(6, 23, 6) solid;
+    position: relative;
+}
+
+.player-container {
+    width: 100px;
+    height: 150px;
+    position: absolute;
+}
+
+.player-container1 {
+    top: 30%;
+    left: 1%
+}
+
+.player-container2 {
+    top: 1%;
+    left: calc(25% - 50px)
+}
+
+.player-container3 {
+    top: 1%;
+    left: calc(50% - 50px)
+}
+
+.player-container4 {
+    top: 1%;
+    left: calc(75% - 50px)
+}
+
+.player-container5 {
+    top: 30%;
+    left: 91%
+}
+
+.player-wrapper {
+    position: relative;
+}
+
+.card-player {
+    position: absolute;
+}
+
+.player-container1 .card-player {
+    top: 50%;
+    left: 130%;
+}
+
+.player-container2 .card-player {
+    top: 100%;
+    left: 80%;
+}
+
+.player-container3 .card-player {
+    top: 100%;
+    left: 15%;
+}
+
+.player-container4 .card-player {
+    top: 100%;
+    right: 80%;
+}
+
+.player-container5 .card-player {
+    top: 50%;
+    right: 130%;
+}
+
+.bet-player {
+    position: absolute;
+    display: flex;
+}
+
+.player-container1 .bet-player {
+    top: 80%;
+    left: 220%;
+}
+
+.player-container2 .bet-player {
+    top: 160%;
+    left: 155%;
+}
+
+.player-container3 .bet-player {
+    top: 180%;
+    left: 25%;
+}
+
+.player-container4 .bet-player {
+    top: 160%;
+    right: 155%;
+}
+
+.player-container5 .bet-player {
+    top: 80%;
+    right: 220%;
+}
+
+.card-player {
+    width: 70px;
+    height: 110px;
+    border: 2px solid;
+    margin: 0 auto;
+}
+
+.trump {
+    width: 70px;
+    height: 110px;
+    left: calc(50% - 35px);
+    top: calc(50% - 55px);
+    border-radius: 10px;
+    position: absolute;
+}
+
+.trump-card {
+    width: 100%;
+    height: 100%;
+}
+
+.bank-game {
+    width: 80px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 48%;
+    left: 55%;
+}
+
+.img-bank {
+    width: 20px;
+    height: 20px;
+}
+
+.my-cards {
+    display: flex;
+    position: absolute;
+    left: calc(50% - 138px);
+    bottom: 0;
+    gap: 3px;
+}
+
+.my-card {
+    width: 90px;
+    height: 130px;
+    border-radius: 10px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+}
+
+.panel-buttons {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    left: calc(50% - 160px);
+    top: 76%;
+}
+
+.button {
+    width: 100px;
+    height: 34px;
+    color: white;
+    background-color: rgb(5, 5, 24);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ready {
+    width: 320px;
+}
+
+.money {
+    width: 80px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 65%;
+    bottom: 2%;
+}
+
+.foto-profile-player {
+    width: 90px;
+    height: 90px;
+    background-color: aquamarine;
+    border-radius: 100px;
+    margin: auto;
+}
+
+.nickname-player {
+    height: 18px;
+    line-height: 18px;
+    font-size: 18px;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 1000;
+}
+
+.flipped-cards {
+    text-align: center;
+}
+
+.img-coin {
+    width: 20px;
+    height: 20px;
+    margin-left: 2px;
+}
+
+.count-money {
+    margin-left: 2px;
+    font-size: 16px;
+    font-weight: 1000;
+    color: rgb(199, 159, 28);
+}
+
+.my-card-player {
+    width: 70px;
+    height: 110px;
+    border: solid 2px;
+    position: absolute;
+    left: calc(50% - 35px);
+    top: 59%
+}
