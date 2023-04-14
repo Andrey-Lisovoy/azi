@@ -223,6 +223,10 @@ io.on('connection', function(socket) {
                         name: 'bank',
                         bank: GAME.bank
                     });
+                    for(player of PLAYERS) {
+                        player.ready = false;
+                    }
+                    return
                 } else if(player.winRound == 1) {
                     winRoundCount++;
                 }
@@ -237,6 +241,9 @@ io.on('connection', function(socket) {
                     name: 'bank',
                     bank: GAME.bank
                 });
+                for(player of PLAYERS) {
+                    player.ready = false;
+                }
             } else {
                 for(player of discardingPlayers) {
                     player.discardedCard = ''
