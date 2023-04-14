@@ -7,6 +7,7 @@ var ICanClickPas = false;
 var ICanClickEqual = false
 var ICanClickCard = false;
 var event = ''
+var text = ''
 
 function getPlayerContainerBySocketId(socketId) {
     for(let container of playerContainers) {
@@ -17,7 +18,7 @@ function getPlayerContainerBySocketId(socketId) {
     return false;
 }
 
-function updateInfoText(text) {
+function updateInfoText() {
     let infoText = document.querySelector('.info-text')
     infoText.innerHTML = text;
 }
@@ -114,21 +115,21 @@ increaseBtn.addEventListener('click', () => {
 // ------------ PAS --------------------------
 let pasBtn = document.querySelector('#pas')
 pasBtn.addEventListener('click', () => {
-    if(ICanClickPas) {
-        // switch(event) {
-        //     case 'firstBet': {
-        //         socket.emit('firstBet', false);
-        //         break;
-        //     };
-        //     case 'secondBet': {
-        //         socket.emit('secondBet', 'pas');
-        //         break
-        //     };
-        // }
-        ICanClickPas = false
-        ICanClickEqual = false
-        ICanClickIncrease = false
-    }
+    // if(ICanClickPas) {
+    //     // switch(event) {
+    //     //     case 'firstBet': {
+    //     //         socket.emit('firstBet', false);
+    //     //         break;
+    //     //     };
+    //     //     case 'secondBet': {
+    //     //         socket.emit('secondBet', 'pas');
+    //     //         break
+    //     //     };
+    //     // }
+    //     ICanClickPas = false
+    //     ICanClickEqual = false
+    //     ICanClickIncrease = false
+    // }
 })
 // -------------------------------------------
 
@@ -234,7 +235,7 @@ function firstBet(currentSocketId, data) {
         text = `Игра началась. Ваша очередь делать первоначальную ставку. Нажмите ПОВЫСИТЬ(играть дальше)`;
     }
 
-    updateInfoText(text)
+    updateInfoText()
 }
 
 function bank(data) {
@@ -276,16 +277,16 @@ function deskSuit(data) {
 function secondBet(currentSocketId, data) {
 
     if(currentSocketId != data.player.socketId) {
-        $text = `Игроки делают вторую ставку. Очередь игрока ${data.player.name}.`;
+        text = `Игроки делают вторую ставку. Очередь игрока ${data.player.name}.`;
     } else {
         ICanClickIncrease = true;
         ICanClickPas = true;
         ICanClickEqual = true;
         event = 'secondBet'
-        $text = `Ваша очередь делать вторую ставку. Нажмите ПОВЫСИТЬ(предыдущая ставка х2) или УРАВНЯТЬ(поставить предыдущую ставку)`;
+        text = `Ваша очередь делать вторую ставку. Нажмите ПОВЫСИТЬ(предыдущая ставка х2) или УРАВНЯТЬ(поставить предыдущую ставку)`;
     }
 
-    updateInfoText($text)
+    updateInfoText()
 }
 
 function discardCard(currentSocketId, data) {
@@ -308,7 +309,7 @@ function discardCard(currentSocketId, data) {
         text = `Ваша очередь выкидывать карту. Выберите желаемую карту`;
     }
 
-    updateInfoText($text)
+    updateInfoText()
 }
 
 function playerCard(data) {
@@ -330,7 +331,7 @@ function winPlayer(currentSocketId, data) {
     let myCard = document.querySelector('.my-card-player .card');
     myCard.style = 'display: none';
 
-    let text = `Выиграл игрок ${data.player.name}. Нажмите готово для следующей партии`
+    text = `Выиграл игрок ${data.player.name}. Нажмите готово для следующей партии`
     ICanClickReady = true;
     ICanClickCard = false;
     ICanClickEqual = false;
@@ -365,7 +366,7 @@ function winPlayer(currentSocketId, data) {
 
     console.log('text', text);
 
-    updateInfoText(text)
+    updateInfoText()
 
 }
 
@@ -378,7 +379,7 @@ function azi(data) {
     let myCard = document.querySelector('.my-card-player .card');
     myCard.style = 'display: none';
 
-    let text = `Ази. Нажмите готово для следующей партии`
+    text = `Ази. Нажмите готово для следующей партии`
     ICanClickReady = true;
     ICanClickCard = false;
     ICanClickEqual = false;
@@ -413,5 +414,5 @@ function azi(data) {
 
     console.log('text', text);
 
-    updateInfoText(text)
+    updateInfoText()
 }
